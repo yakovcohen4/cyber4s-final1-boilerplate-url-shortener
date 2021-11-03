@@ -2,13 +2,15 @@
 
 <html>
   <head>
-    <title>URL Shortener</title>
-    <link rel="icon" type="image/png" href="../public/favicon.ico" />
-    <link href="./public/style.css" rel="stylesheet" type="text/css" />
+    <title>Rebrand URL</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script defer src="./index.js"></script></head>
 
   <body>
-    <h1>URL Shortener Microservice</h1>
+    <h1>Rebrand URL</h1>
+    <h3>Life is too short to spend time with long URL who suck the happiness out of you.
+    </h3>
+    <h2>so shorten them!</h2>
     <main>
       <section>
         <form action="api/shorturl/new" method="POST">
@@ -19,15 +21,15 @@
               id="url_input"
               type="text"
               name="url"
-              placeholder="https://www.freecodecamp.org/"
+              placeholder="Make your life better"
             />
-            <input type="submit" value="POST URL" />
+            <input type="submit" value="Shorten URL" />
           </fieldset>
         </form>
       </section>
     </main>
     <footer>
-      <p>By <a href="https://www.freecodecamp.org/">freeCodeCamp</a></p>
+      <p>By <a href="https://github.com/yakovcohen4" target="_blank" >Yakov Cohen</a></p>
     </footer>
   </body>
 </html>

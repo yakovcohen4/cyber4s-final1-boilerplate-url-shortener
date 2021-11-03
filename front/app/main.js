@@ -1,4 +1,4 @@
-import "./styles/index.scss";
+// import "./styles/index.scss";
 import "./styles/style.css";
 import { selectComponent } from "./js/selectComponent";
 
