@@ -3,7 +3,10 @@
 <html>
   <head>
     <title>Rebrand URL</title>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo&family=Oxygen&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
   </head>
 
   <body>
@@ -13,8 +16,6 @@
     <h2>so shorten them!</h2>
     <main>
       <section>
-        <form action="api/shorturl/new" method="POST">
-          <fieldset>
             <legend>URL Shortener</legend>
             <label for="url_input">URL:</label>
             <input
@@ -23,13 +24,36 @@
               name="url"
               placeholder="Make your life better"
             />
-            <input type="submit" value="Shorten URL" />
-          </fieldset>
-        </form>
+            <input id="submit" type="submit" value="Shorten URL" />
       </section>
+      <div id="shorturl">
+
+      </div>
     </main>
+
     <footer>
-      <p>By <a href="https://github.com/yakovcohen4" target="_blank" >Yakov Cohen</a></p>
+      
+      <div>By 
+        <a href="https://ashdodnet.com/dyncontent/Old/b7net/cmsobject/2017/1/18/958796635441383302636.jpg" target="_blank" >Yakov Cohen</a>
+      </div>
+        <div class="wrapper">
+
+          <a href="https://www.facebook.com/profile.php?id=100000223885579" target="_blank" class="icon facebook">
+            <div class="tooltip">Facebook</div>
+            <span><i class="fab fa-facebook-f"></i></span>
+          </a>
+
+          <a href="https://www.instagram.com/yakovcohen4" target="_blank" class="icon instagram">
+            <div class="tooltip">Instagram</div>
+            <span><i class="fab fa-instagram"></i></span>
+          </a>
+
+          <a href="https://github.com/yakovcohen4" target="_blank" class="icon github">
+            <div class="tooltip">Github</div>
+            <span><i class="fab fa-github"></i></span>
+          </a>
+
+        </div>
     </footer>
   </body>
 </html>
