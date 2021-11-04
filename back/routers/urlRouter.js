@@ -4,32 +4,42 @@ const shortid = require('shortid');
 const fs = require('fs')
 const path = require('path');
 
-console.log(shortid.generate());
+// console.log(shortid.generate());
 
 const baseUrl="http://localhost:3000/api"
 
 router.post("/",(req,res)=>{
-    const longUrl=`"${req.body.longUrl}"`;
-    const iD='_' + Math.random().toString(36).substr(2, 9)
-    const shortUrl=baseUrl +"/"+ iD;
-    let urls=fs.readdirSync(`./backEnd/DB`)
-    // res.send(urls)
-    for (let url of urls){
-        console.log(longUrl.toString())
-        console.log(fs.readFileSync(`./backEnd/DB/${url}`).toString())
-        console.log(longUrl===fs.readFileSync(`./backEnd/DB/${url}`).toString())
-        if (longUrl===fs.readFileSync(`./backEnd/DB/${url}`).toString())
-        res.send("yes")
-    }
-    const urlFolderPath = path.resolve(`./backEnd/DB`,  iD +".json");
-        fs.writeFileSync(urlFolderPath, `${JSON.stringify(longUrl)}`); 
+    const longUrl = `${req.body.longUrl}`;
+    const id = shortid.generate();
+    const shortUrl = baseUrl +"/"+ id;
 
-     res.send(shortUrl); 
+    data = JSON.parse(fs.readFileSync('./back/database.json', "utf-8"))
+    for(let key in data){
+        console.log("key "+key);
+        if (data[key].longUrl === longUrl){
+            console.log("data "+data[key]);
+            return res.send(baseUrl +"/"+ key)
+        }
+    }
+    data[id] = {"longUrl": longUrl, "date": new Date(), "numOfEnter": 0};
+    fs.writeFileSync('./back/database.json', JSON.stringify(data))
+    res.send(shortUrl); 
 })
 
-router.get("/:id", (req, res) => { 
-    res.status(301).header("Location", "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/301").end();
-    res.send("res");
+router.get("/:id/", (req, res) => { 
+    const id = req.params.id;
+    let dataBase = JSON.parse(fs.readFileSync("./back/database.json", "utf-8"));
+    dataBase[id]["numOfEnter"]+=1;
+    fs.writeFileSync("./back/database.json", JSON.stringify(dataBase));
+    res.status(301).header("location", dataBase[id].longUrl);
+    res.end()
+})
+
+router.get("/statistic/:id" ,(req,res)=>{
+    const id=req.params.id;
+    let dataBase = JSON.parse(fs.readFileSync("./back/database.json", "utf-8"));
+    let data={"date": dataBase[id]["date"], "redirectCount": dataBase[id]["numOfEnter"]}
+    res.send(data)
 })
 
 module.exports = router;
