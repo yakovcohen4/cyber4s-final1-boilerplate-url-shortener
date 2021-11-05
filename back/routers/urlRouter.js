@@ -42,4 +42,5 @@ router.get("/statistic/:id" ,(req,res)=>{
     res.send(data)
 })
 
+
 module.exports = router;

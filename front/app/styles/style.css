@@ -1,3 +1,10 @@
+@media screen and (max-width: 1100px) {
+  body{
+    font-size: 16px;
+    background-color: rgb(223, 19, 162);
+  }
+}
+
 body {
   font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
   font-size: 16px;
@@ -5,21 +12,18 @@ body {
   background-color: #fff;
   text-align: center;
   line-height: 1.4em;
-  background-color:gray;
+  /* background-color:gray; */
+  background-color: rgb(177, 214, 206);
 }
 
 main {
   padding: 0;
   margin-top: 40px;
-  background-color: rgb(177, 214, 206);
+  background-color: rgb(75, 117, 156);
 }
 
 h3 {
   margin-top: 30px;
-}
-
-.user-stories li {
-  margin-bottom: 1em;
 }
 
 a {
@@ -54,7 +58,7 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: rgb(75, 117, 156);
 }
 li {
   float: left;
@@ -72,12 +76,12 @@ li a:hover:not(.active){
   background-color: #111;
 }
 li a:hover {
-  background-color: rgb(183, 199, 209);
+  background-color: rgb(67, 95, 156);
 }
 .active {
   border-left: 1px solid lightblue ;
   float: right;
-  color: #04AA6D;
+  color: #ffffff;
 }
 /* ----navbar---- */
 
@@ -236,13 +240,22 @@ li a:hover {
 
 /* ------icons------ */
 footer {
-  background-color: rgb(177, 214, 206);
-  /* margin-right: 15%;
-  margin-left: 15%; */
+  background-color: rgb(75, 117, 156);
+  color:#fff;
   width: 100%;
+  padding: 0.8em;
   position: fixed;
   top: 80%;
   font-family: "Poppins", sans-serif;
+}
+#by{
+  /* color: rgb(177, 214, 206); */
+  color: #fff;
+  font-style: italic;
+  text-decoration:none;
+}
+#by:hover{
+  color: #111;
 }
 *:focus,
 *:active {
