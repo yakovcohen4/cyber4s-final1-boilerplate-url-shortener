@@ -12,7 +12,7 @@ async function shortApi(){
     div.style.display = "block";
 
     try{
-        let response = await axios.post("http://localhost:3000/api",{
+        let response = await axios.post("/api",{
             "longUrl":longUrl.value
         })
 
@@ -92,7 +92,7 @@ async function showData(){
     console.log('in the show func ');
     let div = document.getElementById("shorturl")
     removeAllChildNodes(div)
-    let response = await axios.get(`http://localhost:3000/api/statistic/${id}`)
+    let response = await axios.get(`/api/statistic/${id}`)
     let data = (response.data);
     let p = document.createElement("p");
     p.innerText=(`creation Date:${data.date}  
