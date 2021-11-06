@@ -6,7 +6,7 @@ const path = require('path');
 
 // console.log(shortid.generate());
 
-const baseUrl="http://localhost:3000/api"
+const baseUrl = "https://yakov-short-url.herokuapp.com/";
 
 router.post("/",(req,res)=>{
     const longUrl = `${req.body.longUrl}`;
