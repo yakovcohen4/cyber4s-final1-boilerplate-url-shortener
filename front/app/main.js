@@ -28,38 +28,37 @@ async function shortApi(){
 // error fun 
 function newURL(response) {
 
-    console.log(response);
-    console.log(response.split("api/")[1]);
-    const id = response.split("api/")[1];
+    const newDivUrl = document.createElement('div');     // new div
+    newDivUrl.setAttribute("id", "newurl");
+    newDivUrl.classList.add("errorMessage");
 
-    const newURL = document.createElement('div');
-    const url = document.createElement("span")
-    newURL.setAttribute("id", "newurl");
-    newURL.classList.add("errorMessage");
-    url.textContent = `${response}`;
+    const url = document.createElement("span")           // url text
+    url.textContent = response;
     url.setAttribute("id", "url");
-    newURL.appendChild(url);
-    divLoader.appendChild(newURL)
+
+    newDivUrl.appendChild(url);                          // add span url to div
+    divLoader.appendChild(newDivUrl)                     // add div to big div
     
     // copy
     const copyBtn = document.createElement("button");
     copyBtn.classList.add('close-loader-btn');
     copyBtn.textContent = "copy";
     copyBtn.addEventListener("click", ()=>{
+        // console.log(document.getElementById("url"));
         const copyText = document.getElementById("newurl").textContent; // text
         const url = copyText.split('copy')[0];
         navigator.clipboard.writeText(url);                             // copy url
     });
-    newURL.appendChild(copyBtn);
+    newDivUrl.appendChild(copyBtn);
 
     // show 
     const sticBtn = document.createElement("button");
-    console.log(sticBtn);
+    // console.log(sticBtn);
     sticBtn.classList.add('close-loader-btn');
     sticBtn.textContent = "show stic";
     sticBtn.addEventListener("click", showData);
 
-    newURL.appendChild(sticBtn);
+    newDivUrl.appendChild(sticBtn);
 }
 
 // error fun 
