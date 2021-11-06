@@ -30,7 +30,7 @@ async function shortApi(){
 function newURL(response) {
 
     const newURL = document.createElement('div');
-    const url = document.createElement("span")
+    const url = document.createElement("span");
 
     divShort.style.paddingBottom = "1em";
     newURL.setAttribute("id", "newurl");
@@ -71,8 +71,13 @@ function errormessage(error) {
     divShort.style.paddingBottom = "1em";
     const errorMessage = document.createElement('div')
     errorMessage.classList.add("message");
-    errorMessage.textContent = error.response.data.error;
-    divShort.appendChild(errorMessage)
+
+    const errspan = document.createElement("span");
+    errspan.textContent = error.response.data.error;
+    errspan.setAttribute("id", "errspan");
+    
+    errorMessage.appendChild(errspan);
+    divShort.appendChild(errorMessage);
     
     const closeBtn = document.createElement("button");
     closeBtn.classList.add('close-loader-btn')
@@ -91,10 +96,7 @@ function errormessage(error) {
 // show my stic
 async function showData(){
     const idEl = document.getElementById("url");
-    // console.log(idEl.textContent.split("api/")[1]);
-
     const id = idEl.textContent.split("api/")[1];
-    // console.log('in the show func ');
 
     const divNewUrl = document.getElementById("newurl")
     // removeAllChildNodes(div)
