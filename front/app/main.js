@@ -4,12 +4,12 @@ import "./styles/style.css";
 const shortbtn = document.getElementById("submit")
 shortbtn.addEventListener("click", shortApi);
 
-const div = document.getElementById("shorturl");
+const divShort = document.getElementById("shorturl");
 const divLoader = document.getElementById("loader");
 
 async function shortApi(){
     const longUrl = document.getElementById("url_input");
-    div.style.display = "block";
+    divShort.style.display = "block";
 
     try{
         let response = await axios.post("http://localhost:3000/api",{
@@ -21,6 +21,7 @@ async function shortApi(){
     }
     catch(error){
         longUrl.value = "";
+        // removeAllChildNodes(divShort);
         errormessage(error)
     }
 }
@@ -28,19 +29,21 @@ async function shortApi(){
 // error fun 
 function newURL(response) {
 
-    console.log(response);
-    console.log(response.split("api/")[1]);
-    const id = response.split("api/")[1];
-
     const newURL = document.createElement('div');
     const url = document.createElement("span")
+
+    divShort.style.paddingBottom = "1em";
     newURL.setAttribute("id", "newurl");
-    newURL.classList.add("errorMessage");
+    newURL.classList.add("message");
+
     url.textContent = `${response}`;
     url.setAttribute("id", "url");
     newURL.appendChild(url);
-    divLoader.appendChild(newURL)
+    divShort.appendChild(newURL)
     
+    const buttons = document.createElement("span");
+    buttons.setAttribute("class" ,"buttons");
+
     // copy
     const copyBtn = document.createElement("button");
     copyBtn.classList.add('close-loader-btn');
@@ -50,36 +53,37 @@ function newURL(response) {
         const url = copyText.split('copy')[0];
         navigator.clipboard.writeText(url);                             // copy url
     });
-    newURL.appendChild(copyBtn);
+    buttons.appendChild(copyBtn);
 
     // show 
     const sticBtn = document.createElement("button");
-    console.log(sticBtn);
     sticBtn.classList.add('close-loader-btn');
-    sticBtn.textContent = "show stic";
+    sticBtn.textContent = "show statics";
     sticBtn.addEventListener("click", showData);
+    buttons.appendChild(sticBtn);
 
-    newURL.appendChild(sticBtn);
+    newURL.appendChild(buttons)
 }
 
 // error fun 
 function errormessage(error) {
 
+    divShort.style.paddingBottom = "1em";
     const errorMessage = document.createElement('div')
-    errorMessage.classList.add("errorMessage");
+    errorMessage.classList.add("message");
     errorMessage.textContent = error.response.data.error;
-    divLoader.appendChild(errorMessage)
+    divShort.appendChild(errorMessage)
     
     const closeBtn = document.createElement("button");
     closeBtn.classList.add('close-loader-btn')
     closeBtn.textContent = "close";
     closeBtn.addEventListener("click", ()=> {
-        document.querySelector(".errorMessage").remove()
+        document.querySelector(".message").remove()
     });
     errorMessage.appendChild(closeBtn);
     
     setTimeout(()=>{
-        divLoader.removeChild(errorMessage)
+        divShort.removeChild(errorMessage)
     },4000)
     
 }
@@ -87,17 +91,26 @@ function errormessage(error) {
 // show my stic
 async function showData(){
     const idEl = document.getElementById("url");
-    console.log(idEl.textContent.split("api/")[1]);
+    // console.log(idEl.textContent.split("api/")[1]);
+
     const id = idEl.textContent.split("api/")[1];
-    console.log('in the show func ');
-    let div = document.getElementById("shorturl")
-    removeAllChildNodes(div)
-    let response = await axios.get(`http://localhost:3000/api/statistic/${id}`)
-    let data = (response.data);
-    let p = document.createElement("p");
-    p.innerText=(`creation Date:${data.date}  
-    redirect Count:${data.redirectCount}`);
-    div.appendChild(p);
+    // console.log('in the show func ');
+
+    const divNewUrl = document.getElementById("newurl")
+    // removeAllChildNodes(div)
+    try {
+        const response = await axios.get(`http://localhost:3000/api/statistic/${id}`)
+        const data = (response.data);
+        const div = document.createElement("div");
+        div.setAttribute("class","divstatics")
+    
+        div.innerText=(`Creation Date: ${data.date}  
+        Redirect Count: ${data.redirectCount}`);
+        divNewUrl.appendChild(div);
+        
+    } catch (error) {
+        
+    }
 }
 // remove childs
 function removeAllChildNodes(parent) {

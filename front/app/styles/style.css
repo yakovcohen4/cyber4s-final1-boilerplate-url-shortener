@@ -89,9 +89,25 @@ li a:hover {
 #longurl{
   padding: 1em;
   font-size: 1.5em;
+  border-bottom: 3px solid #111;
 }
 #shorturl{
-  margin-top: 1em;
+  margin: 1em;
+}
+#url{
+  font-size: 1.3em;
+  font-style: normal;
+  font-family: Georgia, Times, 'Times New Roman', serif;
+}
+#newurl{
+  padding: 1em;
+  text-align: left;
+}
+.divstatics{
+  font-style: normal;
+  font-family: Verdana, Tahoma, sans-serif;
+  font-size: 0.9em;
+  padding: 0.5em;
 }
 
 #url_input{
@@ -149,30 +165,28 @@ li a:hover {
 /* -----copy------ */
 
 
-/* ----err message---- */
+/* ---- message---- */
 #loader{
-  margin-top: 0.5em;
-  margin-bottom: 0.2em;
-  margin-right: 10%;
-  margin-left: 10%;
 
 }
-.errorMessage{
+.message{
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   background: rgba(175, 218, 233, 0.5);
   border: 0.1em solid;
   border-radius: 1em;
-  font-style: italic;
   font-size: 1em;
   flex:auto;
-  margin-left:15%;
-  margin-right: 15%;
+  margin-left:5%;
+  margin-right:5%;
+}
+.buttons{
+  float:right
 }
 .close-loader-btn{
-  /* margin: 1em; */
-  margin-left: 0.8em;
-  margin-right: 0.8em;
+  /* float: right; */
+  margin-left: 0.5em;
+  margin-right: 0.5em;
   text-transform: uppercase;
   text-decoration: none;
   background: #f7e78f;
@@ -183,10 +197,10 @@ li a:hover {
 }
 .close-loader-btn:hover{
   background: #b0b658;
-  letter-spacing: 1px;
+  /* letter-spacing: 1px;
   -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
   -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-  box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+  box-shadow: 5px 40px -10px rgba(0,0,0,0.57); */
   transition: all 0.4s ease 0s;
 }
 /* ----err message---- */
