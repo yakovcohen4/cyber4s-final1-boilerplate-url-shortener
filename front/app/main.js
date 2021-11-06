@@ -12,7 +12,7 @@ async function shortApi(){
     divShort.style.display = "block";
 
     try{
-        let response = await axios.post("http://localhost:3000/api",{
+        let response = await axios.post("/api",{
             "longUrl":longUrl.value
         })
 
@@ -99,7 +99,7 @@ async function showData(){
     const divNewUrl = document.getElementById("newurl")
     // removeAllChildNodes(div)
     try {
-        const response = await axios.get(`http://localhost:3000/api/statistic/${id}`)
+        const response = await axios.get(`/api/statistic/${id}`)
         const data = (response.data);
         const div = document.createElement("div");
         div.setAttribute("class","divstatics")
