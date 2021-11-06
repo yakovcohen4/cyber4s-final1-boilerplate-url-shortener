@@ -98,6 +98,8 @@ async function showData(){
     const idEl = document.getElementById("url");
     const id = idEl.textContent.split("api/")[1];
 
+    document.getElementsByClassName("divstatics").remove()
+
     const divNewUrl = document.getElementById("newurl")
     // removeAllChildNodes(div)
     try {
@@ -111,7 +113,7 @@ async function showData(){
         divNewUrl.appendChild(div);
         
     } catch (error) {
-        
+        console.log('err to show');
     }
 }
 // remove childs
