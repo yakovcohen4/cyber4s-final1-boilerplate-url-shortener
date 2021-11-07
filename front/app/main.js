@@ -6,6 +6,7 @@ shortbtn.addEventListener("click", shortApi);
 
 const divShort = document.getElementById("shorturl");
 const divLoader = document.getElementById("loader");
+const divNewUrl = document.getElementById("newurl");
 
 async function shortApi(){
     const longUrl = document.getElementById("url_input");
@@ -98,6 +99,7 @@ async function showData(){
     const idEl = document.getElementById("url");
     const id = idEl.textContent.split("api/")[1];
 
+    // if(divNewUrl.hasChild())
     // if (document.getElementsByClassName("divstatics")){
     //     document.getElementsByClassName("divstatics").remove();
     // }
