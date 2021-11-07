@@ -2,9 +2,8 @@ const express = require('express');
 const router = express.Router();
 const shortid = require('shortid');
 const fs = require('fs')
-const path = require('path');
+const moment = require('moment');
 
-// console.log(shortid.generate());
 
 const baseUrl = "https://yakov-short-url.herokuapp.com/api";
 
@@ -21,7 +20,7 @@ router.post("/",(req,res)=>{
             return res.send(baseUrl +"/"+ key)
         }
     }
-    data[id] = {"longUrl": longUrl, "date": new Date(), "numOfEnter": 0};
+    data[id] = {"longUrl": longUrl, "date": moment().format('LL'), "numOfEnter": 0};
     fs.writeFileSync('./back/database.json', JSON.stringify(data))
     res.send(shortUrl); 
 })

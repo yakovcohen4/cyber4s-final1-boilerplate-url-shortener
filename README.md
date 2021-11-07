@@ -7,7 +7,7 @@
 * JS
 * CSS
 #### **End** 
-* Node JS - with nodemon, shortid, express, path, fs, moment.
+* Node JS - with nodemon, shortid, express, fs, moment.
 #### **Deploy** 
 * Heroku deployment 
 * **View my app! -  https://yakov-short-url.herokuapp.com/**
