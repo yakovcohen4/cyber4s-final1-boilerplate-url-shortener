@@ -98,9 +98,9 @@ async function showData(){
     const idEl = document.getElementById("url");
     const id = idEl.textContent.split("api/")[1];
 
-    if (document.getElementsByClassName("divstatics")){
-        document.getElementsByClassName("divstatics").remove();
-    }
+    // if (document.getElementsByClassName("divstatics")){
+    //     document.getElementsByClassName("divstatics").remove();
+    // }
 
     const divNewUrl = document.getElementById("newurl")
     // removeAllChildNodes(div)
